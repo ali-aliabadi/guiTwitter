@@ -18,7 +18,7 @@
             <children>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="signup_btn" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#showSignupPage" onMouseClicked="#loadsignuppage" style="-fx-background-color: transparent; -fx-text-fill: #aeaeae; -fx-border-width: 0px 0px 2px0px 0px 02px 0px  2px; -fx-border-color: #aeaeae; -fx-font-weight: bold; -fx-font-size: 15;" text="Sign up">
+                        <Button fx:id="signup_btn" alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#loadsignuppage" style="-fx-background-color: transparent; -fx-text-fill: #aeaeae; -fx-border-width: 0px 0px 2px0px 0px 02px 0px  2px; -fx-border-color: #aeaeae; -fx-font-weight: bold; -fx-font-size: 15;" text="Sign up">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
                             </HBox.margin>
@@ -40,7 +40,7 @@
                     <children>
                   <ImageView fitHeight="125.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../res/Twitter_Logo_Blue.png" />
+                        <Image url="file:/home/ali/Projects/guiTweeter/res/Twitter_Logo_Blue.png" />
                      </image>
                   </ImageView>
                         <Text fill="#16172e" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 30; -fx-fill: #16172e;" text="Login">
@@ -56,7 +56,7 @@
                                     <graphic>
                                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../res/username.png" />
+                                                <Image url="file:/home/ali/Projects/guiTweeter/res/username.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -75,9 +75,9 @@
                                 </PasswordField>
                                 <Button fx:id="showpass_btn" mnemonicParsing="false" onMousePressed="#showPass" onMouseReleased="#hidePass" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
                                     <graphic>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0" onMousePressed="#showpasswordpress" onMouseReleased="#showpasswordrelease" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../res/pass.png" />
+                                                <Image url="file:/home/ali/Projects/guiTweeter/res/pass.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
