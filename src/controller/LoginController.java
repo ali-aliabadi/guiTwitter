@@ -13,22 +13,10 @@ import java.io.IOException;
 public class LoginController {
 
     @FXML
-    private Button signup_btn;
-
-    @FXML
-    private Button login_btn;
-
-    @FXML
     private TextField username_txt;
 
     @FXML
     private PasswordField password_txt;
-
-    @FXML
-    private Button showpass_btn;
-
-    @FXML
-    private Button enter_btn;
 
     @FXML
     private TextField showpass_txt;
@@ -40,36 +28,23 @@ public class LoginController {
 
     @FXML
     void hidePass(MouseEvent event) {
-
+        password_txt.setVisible(true);
+        password_txt.setText(showpass_txt.getText());
+        showpass_txt.setVisible(false);
     }
 
     @FXML
-    void loadsignuppage(MouseEvent event) {
-
+    void loadsignuppage(MouseEvent event) throws IOException {
+        new PageLoader().load("/view/signup_page.fxml");
     }
 
     @FXML
     void showPass(MouseEvent event) {
-
-    }
-
-    @FXML
-    void showSignupPage(ActionEvent event) throws IOException {
-        new PageLoader().load("/View/signup_page.fxml");
-    }
-
-    @FXML
-    void showpasswordpress(MouseEvent event) {
         showpass_txt.setVisible(true);
         showpass_txt.setText(password_txt.getText());
         password_txt.setVisible(false);
     }
 
-    @FXML
-    void showpasswordrelease(MouseEvent event) {
-        password_txt.setVisible(true);
-        password_txt.setText(showpass_txt.getText());
-        showpass_txt.setVisible(false);
-    }
+
 
 }
