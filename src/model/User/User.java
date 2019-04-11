@@ -9,6 +9,7 @@ public class User {
     private String name;
     private String email;
     private String bio;
+    private Gender gender;
 
     private ArrayList <String> followers = new ArrayList <String>();
 
@@ -19,9 +20,10 @@ public class User {
 
     /** constractors */
 
-    User(String id, String password) {
+    User(String id, String password, Gender gender) {
         this.id = id;
         this.password = password;
+        this.gender = gender;
     }
     
     /** setters and adders(add follower and add following) */
@@ -46,12 +48,14 @@ public class User {
     }
 
     public void setBio(String bio) {
-
         /**
          * checking bio be less than 161 words needed
          */
-
         this.bio = bio;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public void addFollowing(String userid) {
@@ -86,6 +90,10 @@ public class User {
 
     public String getBio() {
         return bio;
+    }
+
+    public Gender getGender() {
+        return this.gender;
     }
 
     public int getFollowersNumber() {
