@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+   <children>
+      <VBox prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #4f528c;">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: white; -fx-font-weight: bold; -fx-font-size: 15;" text="Sign up">
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#showLoginPage" onMouseClicked="#loadloginpage" style="-fx-background-color: transparent; -fx-text-fill: #aeaeae; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #aeaeae; -fx-font-size: 15; -fx-font-weight: bold;" text="Log in">
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="5.0" right="30.0" top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="450.0" prefWidth="700.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 35; -fx-fill: #16172e;" text="Sign up" textAlignment="RIGHT">
+                     <font>
+                        <Font name="B Nazanin" size="50.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="35.0" top="30.0" />
+                     </VBox.margin>
+                  </Text>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="700.0" style="-fx-border-color: white;">
+                     <children>
+                        <TextField prefHeight="0.0" prefWidth="263.0" promptText="Username" style="-fx-background-color: transparent; -fx-font-size: 15;" HBox.hgrow="ALWAYS">
+                        </TextField>
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="13.0" prefWidth="35.0" style="-fx-background-color: transparent;" textAlignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../res/username.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="25.0" left="200.0" right="200.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="700.0" style="-fx-border-color: white;">
+                     <children>
+                        <PasswordField fx:id="password" prefHeight="30.0" promptText="Password" style="-fx-background-color: transparent; -fx-font-size: 15;" HBox.hgrow="ALWAYS">
+                        </PasswordField>
+                        <Button mnemonicParsing="false" onMousePressed="#showPass" onMouseReleased="#hidePass" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" onMousePressed="#passwordshowpress" onMouseReleased="#passwordshowrelease" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../res/pass.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="25.0" left="200.0" right="200.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="700.0" style="-fx-border-color: white;">
+                     <children>
+                        <PasswordField fx:id="confirmpassword" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-font-size: 15;" HBox.hgrow="ALWAYS">
+                        </PasswordField>
+                        <Button mnemonicParsing="false" onMousePressed="#showConfirmPass" onMouseReleased="#hideConfirmPass" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" onMousePressed="#confirmpasswordpress" onMouseReleased="#confirmpasswordrlease" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../res/pass.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="200.0" right="200.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="Wrong password" visible="false">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="15.0" top="15.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Button mnemonicParsing="false" onMouseClicked="#registeruser" prefHeight="31.0" prefWidth="145.0" style="-fx-background-color: #16172e; -fx-text-fill: white; -fx-font-size: 17; -fx-font-weight: bold;" text="register">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="70.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <TextField fx:id="show_confirmpass" layoutX="200.0" layoutY="225.0" prefHeight="27.0" prefWidth="270.0" style="-fx-background-color: transparent; -fx-font-size: 15;" visible="false" />
+      <TextField fx:id="show_pass" layoutX="200.0" layoutY="282.0" prefHeight="27.0" prefWidth="270.0" style="-fx-background-color: transparent; -fx-font-size: 15;" visible="false" />
+   </children>
+</Pane>
