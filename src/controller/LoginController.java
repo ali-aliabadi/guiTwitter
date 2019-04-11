@@ -22,29 +22,26 @@ public class LoginController {
     private TextField showpass_txt;
 
     @FXML
-    void enterworkplace(MouseEvent event) {
+    void enterworkplace() {
 
     }
 
     @FXML
-    void hidePass(MouseEvent event) {
+    void hidePass() {
         password_txt.setVisible(true);
         password_txt.setText(showpass_txt.getText());
         showpass_txt.setVisible(false);
     }
 
     @FXML
-    void loadsignuppage(MouseEvent event) throws IOException {
+    void loadsignuppage() throws IOException {
         new PageLoader().load("/view/signup_page.fxml");
     }
 
     @FXML
-    void showPass(MouseEvent event) {
+    void showPass() {
         showpass_txt.setVisible(true);
         showpass_txt.setText(password_txt.getText());
         password_txt.setVisible(false);
     }
-
-
-
 }

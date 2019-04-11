@@ -1,10 +1,11 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import model.PageLoader;
+
+import java.io.IOException;
 
 public class SignUpController {
 
@@ -21,58 +22,39 @@ public class SignUpController {
     private TextField show_pass;
 
     @FXML
-    void confirmpasswordpress(MouseEvent event) {
-
+    void hideConfirmPass() {
+        confirmpassword.setVisible(true);
+        show_pass.setVisible(false);
     }
 
     @FXML
-    void confirmpasswordrlease(MouseEvent event) {
-
+    void hidePass() {
+        password.setVisible(true);
+        show_confirmpass.setVisible(false);
     }
 
     @FXML
-    void hideConfirmPass(MouseEvent event) {
-
+    void loadloginpage() throws IOException {
+        new PageLoader().load("/view/Login.fxml");
     }
 
     @FXML
-    void hidePass(MouseEvent event) {
-
+    void registeruser() {
+        System.out.println(password.getText() + '\t' + confirmpassword.getText());
     }
 
     @FXML
-    void loadloginpage(MouseEvent event) {
-
+    void showConfirmPass() {
+        show_pass.setVisible(true);
+        show_pass.setText(confirmpassword.getText());
+        confirmpassword.setVisible(false);
     }
 
     @FXML
-    void passwordshowpress(MouseEvent event) {
-
-    }
-
-    @FXML
-    void passwordshowrelease(MouseEvent event) {
-
-    }
-
-    @FXML
-    void registeruser(MouseEvent event) {
-
-    }
-
-    @FXML
-    void showConfirmPass(MouseEvent event) {
-
-    }
-
-    @FXML
-    void showLoginPage(ActionEvent event) {
-
-    }
-
-    @FXML
-    void showPass(MouseEvent event) {
-
+    void showPass() {
+        show_confirmpass.setVisible(true);
+        show_confirmpass.setText(password.getText());
+        password.setVisible(false);
     }
 
 }

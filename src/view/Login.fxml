@@ -107,6 +107,6 @@
                 </VBox>
             </children>
         </VBox>
-        <TextField fx:id="showpass_txt" layoutX="200.0" layoutY="290.0" prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: transparent; -fx-font-size: 20;" visible="false" />
+        <TextField fx:id="showpass_txt" layoutX="200.0" layoutY="295.0" prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: transparent; -fx-font-size: 15;" visible="false" />
     </children>
 </Pane>

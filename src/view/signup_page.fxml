@@ -23,7 +23,7 @@
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#showLoginPage" onMouseClicked="#loadloginpage" style="-fx-background-color: transparent; -fx-text-fill: #aeaeae; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #aeaeae; -fx-font-size: 15; -fx-font-weight: bold;" text="Log in">
+                  <Button mnemonicParsing="false" onMouseClicked="#loadloginpage" style="-fx-background-color: transparent; -fx-text-fill: #aeaeae; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #aeaeae; -fx-font-size: 15; -fx-font-weight: bold;" text="Log in">
                      <HBox.margin>
                         <Insets bottom="15.0" left="5.0" right="30.0" top="15.0" />
                      </HBox.margin>
@@ -51,7 +51,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/username.png" />
+                                    <Image url="file:/home/ali/Projects/guiTweeter/res/username.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -70,9 +70,9 @@
                         </PasswordField>
                         <Button mnemonicParsing="false" onMousePressed="#showPass" onMouseReleased="#hidePass" style="-fx-background-color: transparent;">
                            <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" onMousePressed="#passwordshowpress" onMouseReleased="#passwordshowrelease" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/pass.png" />
+                                    <Image url="file:/home/ali/Projects/guiTweeter/res/pass.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -88,9 +88,9 @@
                         </PasswordField>
                         <Button mnemonicParsing="false" onMousePressed="#showConfirmPass" onMouseReleased="#hideConfirmPass" style="-fx-background-color: transparent;">
                            <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" onMousePressed="#confirmpasswordpress" onMouseReleased="#confirmpasswordrlease" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/pass.png" />
+                                    <Image url="file:/home/ali/Projects/guiTweeter/res/pass.png" />
                                  </image>
                               </ImageView>
                            </graphic>
