@@ -2,11 +2,13 @@ package model.Tweet;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Tweet {
 
     private int id;         // can only be number and its unic
     private String text;    // maximum 140 charectars
+    private Date date;
     private ArrayList<String> userLiked = new ArrayList<String>();
 
 
@@ -17,6 +19,7 @@ public class Tweet {
     Tweet(int id, String text) {
         this.id = id;       // it is seted because the tweet ids start from 0 and new id is previousId + 1 and it is readen from db
         this.text = text;
+        this.date = new Date();
     }
 
 
@@ -47,6 +50,10 @@ public class Tweet {
 
     public String getText() {
         return this.text;
+    }
+
+    public Date getDate() {
+        return this.date;
     }
 
     public void deleteLikedUser(String userId) {
