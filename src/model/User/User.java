@@ -15,15 +15,14 @@ public class User {
 
     private ArrayList <String> following = new ArrayList <String>();
 
-    private ArrayList <Integer> tweets = new ArrayList <Integer>();
+    private ArrayList <String> tweets = new ArrayList <String>();
 
 
     /** constractors */
 
-    User(String id, String password, Gender gender) {
+    public User(String id, String password) {
         this.id = id;
         this.password = password;
-        this.gender = gender;
     }
     
     /** setters and adders(add follower and add following) */
@@ -66,7 +65,7 @@ public class User {
         following.add(userid);
     }
 
-    public void addTweet(int tweetid) {
+    public void addTweet(String tweetid) {
         tweets.add(tweetid);
     }
 
@@ -125,6 +124,30 @@ public class User {
     public boolean equals(Object obj) {
         User user = (User) obj;
         return this.getId().equals(user.getId());
+    }
+
+    @Override
+    public String toString() {
+
+        String strtweet = "";
+        String strfollower = "";
+        String strfollowing = "";
+
+        for (String str: this.tweets) {
+            strtweet = (strtweet + str + ' ');
+        }
+
+        for (String str: this.followers) {
+            strfollower = (strfollower + str + ' ');
+        }
+
+        for (String str: this.following) {
+            strfollowing = (strfollowing + str + ' ');
+        }
+
+        String str = '[' + strtweet + "] [" + strfollower + "] [" + strfollowing + ']';
+
+        return this.getId() + ' ' + this.getPassword() + ' ' + this.getName() + ' ' + this.email + ' ' + this.getBio() + ' ' + this.getGender().toString() + str;
     }
 
 }
