@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class PageLoader {
     private static final int WIDTH = 700;
-    private static final int HEIGHT = 450;
+    private static final int HEIGHT = 487;
     private static Stage stage;
 
     public static void intiStage(Stage primarySrage) {
