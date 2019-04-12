@@ -45,7 +45,7 @@
                   </Text>
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="700.0" style="-fx-border-color: white;">
                      <children>
-                        <TextField prefHeight="0.0" prefWidth="263.0" promptText="Username" style="-fx-background-color: transparent; -fx-font-size: 15;" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="usernamefield" prefHeight="0.0" prefWidth="263.0" promptText="Username" style="-fx-background-color: transparent; -fx-font-size: 15;" HBox.hgrow="ALWAYS">
                         </TextField>
                         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="13.0" prefWidth="35.0" style="-fx-background-color: transparent;" textAlignment="CENTER">
                            <graphic>
@@ -100,20 +100,28 @@
                         <Insets left="200.0" right="200.0" />
                      </VBox.margin>
                   </HBox>
-                  <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="Wrong password" visible="false">
+                  <Text fx:id="passwordmatch" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="passwords didnt match" visible="false">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="15.0" top="15.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
+                  </Text>
+                  <Text fx:id="usernamematch" fill="#ee0202" strokeType="OUTSIDE" strokeWidth="0.0" text="this username is already exist" visible="false">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                   </Text>
                   <Button mnemonicParsing="false" onMouseClicked="#registeruser" prefHeight="31.0" prefWidth="145.0" style="-fx-background-color: #16172e; -fx-text-fill: white; -fx-font-size: 17; -fx-font-weight: bold;" text="register">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="70.0" />
+                        <Insets bottom="30.0" />
                      </VBox.margin>
                   </Button>
                </children>
