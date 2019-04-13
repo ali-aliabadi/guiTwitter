@@ -87,7 +87,7 @@
                                 <Insets bottom="10.0" left="200.0" right="200.0" />
                             </VBox.margin>
                         </HBox>
-                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="Wrong password" visible="false">
+                        <Text fx:id="alertmsg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="Wrong password" visible="false">
                             <font>
                                 <Font name="System Bold" size="20.0" />
                             </font>
