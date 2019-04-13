@@ -57,6 +57,19 @@ public class User {
         this.gender = gender;
     }
 
+    // add setter for arraylists
+    public void setTweets(ArrayList<String> tweets) {
+        this.tweets = tweets;
+    }
+
+    public void setFollowers(ArrayList<String> followers) {
+        this.followers = followers;
+    }
+
+    public void setFollowing(ArrayList<String> following) {
+        this.following = following;
+    }
+
     public void addFollowing(String userid) {
         following.add(userid);
     }
