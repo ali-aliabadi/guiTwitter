@@ -1,5 +1,7 @@
 package model;
 
+
+import controller.Profile;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,5 +25,12 @@ public class PageLoader {
         Parent root = FXMLLoader.load(getClass().getResource(url));
         stage.setScene(new Scene(root, WIDTH, HEIGHT));
         stage.show();
+    }
+
+    public void loadProfile() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/Profile.fxml"));
+        stage.setScene(new Scene(root, WIDTH, HEIGHT));
+        stage.show();
+        new Profile().initialize();
     }
 }
