@@ -57,6 +57,7 @@ public class CompleteProfile {
                 invalidemail.setVisible(false);
             } else {
                 if (validate(email)) {
+                    bio = bio.replace('\n', ' ');
                     if (maleButton.isSelected()) {
                         completeProf(name, email, bio, Gender.MALE);
                     } else {
