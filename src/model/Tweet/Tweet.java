@@ -16,7 +16,7 @@ public class Tweet {
      * constractors
      */
 
-    Tweet(int id, String text) {
+    public Tweet(int id, String text) {
         this.id = id;       // it is seted because the tweet ids start from 0 and new id is previousId + 1 and it is readen from db
         this.text = text;
         this.date = new Date();
@@ -33,6 +33,14 @@ public class Tweet {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setUserLiked(ArrayList<String> userLiked) {
+        this.userLiked = userLiked;
     }
 
     public void addUserLiked(String userId) {
