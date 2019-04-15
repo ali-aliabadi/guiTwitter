@@ -29,7 +29,7 @@ public class workplace {
 
     @FXML
     void my_profile() throws IOException {
-        new PageLoader().loadProfile();
+        new PageLoader().load("/view/Profile.fxml");
     }
 
 }

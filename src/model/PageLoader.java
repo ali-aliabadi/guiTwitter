@@ -27,10 +27,4 @@ public class PageLoader {
         stage.show();
     }
 
-    public void loadProfile() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/Profile.fxml"));
-        stage.setScene(new Scene(root, WIDTH, HEIGHT));
-        stage.show();
-        new Profile().initialize();
-    }
 }
