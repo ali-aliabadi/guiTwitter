@@ -211,7 +211,7 @@
                               <Region prefHeight="34.0" prefWidth="10.0" />
                            </children>
                         </HBox>
-                        <ScrollPane prefHeight="320.0" prefWidth="500.0">
+                        <ScrollPane fx:id="scroll_pane" prefHeight="320.0" prefWidth="500.0">
                            <content>
                               <DialogPane contentText="text of tweet" headerText="tweet" prefHeight="63.0" prefWidth="498.0" style="-fx-background-color: #D0D3D4; -fx-border-width: 0px 0px 1.8px 0px; -fx-border-color: #A9A9A9;">
                                  <graphic>

@@ -5,6 +5,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javafx.fxml.FXML;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.text.Text;
 import model.Main;
 import model.PageLoader;
@@ -37,6 +38,9 @@ public class Profile {
 
     @FXML
     private Text usernamefield;
+
+    @FXML
+    private ScrollPane scroll_pane;
 
     @FXML
     void find_profile() {
@@ -96,10 +100,8 @@ public class Profile {
             di.setContentText((String) doc1.get("text"));
             di.setHeaderText((String) Main.myUser.getId() + "\tlikes : " + ((String[]) doc1.get("userslikedid")).length
                                 + "\tTweet id : " + doc1.get("id") );
-
+            //di.contentProperty();
         }
-
-
     }
 
 }
