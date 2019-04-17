@@ -4,14 +4,18 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import model.Main;
 import model.PageLoader;
 import org.bson.Document;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -43,6 +47,12 @@ public class Profile {
     private ScrollPane scroll_pane;
 
     @FXML
+    private VBox v_box;
+
+    private ArrayList<ToggleButton> likeButtons = new ArrayList<ToggleButton>();
+    private ArrayList<ToggleButton> retweetButtons = new ArrayList<ToggleButton>();
+
+    @FXML
     void find_profile() {
     }
 
@@ -59,29 +69,24 @@ public class Profile {
 
     @FXML
     private void initialize() {
-        try {
-            name_field.setText(Main.myUser.getName());
-            email_field.setText(Main.myUser.getEmail());
-            usernamefield.setText(Main.myUser.getId());
-            String bio = Main.myUser.getBio();
-            int len = bio.length();
-            if (len > 45) {
-                bio = bio.substring(0, 45) + "_\n" + bio.substring(45, len);
-            }
-            if (len + 2 > 90) {
-                bio = bio.substring(0, 90) + "_\n" + bio.substring(90, len + 2);
-            }
-            if (len + 4 > 135) {
-                bio = bio.substring(0, 135) + "_\n" + bio.substring(135, len + 4);
-            }
-            bio_field.setText(bio);
-            followers.setText(String.valueOf(Main.myUser.getFollowersNumber()));
-            followings.setText(String.valueOf(Main.myUser.getFollowingsNumber()));
-            tweet.setText(String.valueOf(Main.myUser.getTweetsNumber()));
-
-        } catch (NullPointerException e) {
-            System.out.println(e.getMessage());
+        name_field.setText(Main.myUser.getName());
+        email_field.setText(Main.myUser.getEmail());
+        usernamefield.setText(Main.myUser.getId());
+        String bio = Main.myUser.getBio();
+        int len = bio.length();
+        if (len > 45) {
+            bio = bio.substring(0, 45) + "_\n" + bio.substring(45, len);
         }
+        if (len + 2 > 90) {
+            bio = bio.substring(0, 90) + "_\n" + bio.substring(90, len + 2);
+        }
+        if (len + 4 > 135) {
+            bio = bio.substring(0, 135) + "_\n" + bio.substring(135, len + 4);
+        }
+        bio_field.setText(bio);
+        followers.setText(String.valueOf(Main.myUser.getFollowersNumber()));
+        followings.setText(String.valueOf(Main.myUser.getFollowingsNumber()));
+        tweet.setText(String.valueOf(Main.myUser.getTweetsNumber()));
 
         MongoClient mongoClient = new MongoClient();
         MongoDatabase database = mongoClient.getDatabase("miniTweeter");
@@ -98,10 +103,18 @@ public class Profile {
             DialogPane di = new DialogPane();
 
             di.setContentText((String) doc1.get("text"));
-            di.setHeaderText((String) Main.myUser.getId() + "\tlikes : " + ((String[]) doc1.get("userslikedid")).length
+            di.setHeaderText(Main.myUser.getId() + "\tlikes : " + ((String[]) doc1.get("userslikedid")).length
                                 + "\tTweet id : " + doc1.get("id") );
-            //di.contentProperty();
+            di.setPrefWidth(496);
+            di.setPrefHeight(125);
+            di.setPadding(new Insets(10, 10, 10, 10));
+            di.setStyle("-fx-border-color: black; -fx-background-color: #D0D3D4; -fx-border-width: 0px 0px 1.8px 0px; -fx-border-color:  #A9A9A9");
+
+
+            v_box.getChildren().add(di);
         }
+
+        mongoClient.close();
     }
 
 }
