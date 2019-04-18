@@ -35,7 +35,7 @@ public class workplace {
     private ArrayList<DialogPane> dialogPanes = new ArrayList<DialogPane>();
     private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 
-    private ToggleButton btn;
+    private Button btn;
     private DialogPane dialogPane;
     private Tweet tweetnew;
 
@@ -120,48 +120,36 @@ public class workplace {
         di.setPadding(new Insets(10, 10, 10, 10));
         di.setStyle("-fx-border-color: black; -fx-background-color: #D0D3D4; -fx-border-width: 0px 0px 1.8px 0px; -fx-border-color:  #A9A9A9");
 
-        ToggleButton like_btn = new ToggleButton();
-
-        like_btn.setText("Like");
+        Button like_btn = new Button("like");
 
         btn = like_btn;
         dialogPane = di;
         tweetnew = myTweet;
 
-        like_btn.setOnMouseClicked(likeOnAction());
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+                System.out.println("\n\n...button clicked...\n\n");
+                if (tweetnew.userLiked.contains(Main.myUser.getId())) {
+                    tweetnew.deleteLikedUser(Main.myUser.getId());
+                    unlikeTweet(tweetnew);
+                    btn.setText("like");
+                } else {
+                    tweetnew.addUserLiked(Main.myUser.getId());
+                    likeTweet(tweetnew);
+                    btn.setText("unlike");
+                }
+                dialogPane.setHeaderText(Main.myUser.getId() + "\tlikes : " + tweetnew.numberOfLikes()
+                        + "\tTweet id : " + tweetnew.getId());
+
+            }
+        });
+
 
         di.setGraphic(like_btn);
 
         v_box.getChildren().add(di);
-    }
-
-    private EventHandler<? super MouseEvent> likeOnAction() {
-        return new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                System.out.println("\n\nbutton clicked...\n\n");
-                System.out.println(btn);
-                System.out.println(tweetnew);
-                System.out.println(dialogPane);
-                if (btn.isSelected()) {
-                    System.out.println("btn is selected");
-                    btn.setSelected(false);
-                    System.out.println("set selected to false");
-                    tweetnew.deleteLikedUser(Main.myUser.getId());
-                    System.out.println("mongo works started");
-                    unlikeTweet(tweetnew);
-                    System.out.println("mongo works over");
-                } else {
-                    btn.setSelected(true);
-                    tweetnew.addUserLiked(Main.myUser.getId());
-                    likeTweet(tweetnew);
-                }
-                System.out.println("before set header text");
-                dialogPane.setHeaderText(Main.myUser.getId() + "\tlikes : " + tweetnew.numberOfLikes()
-                        + "\tTweet id : " + tweetnew.getId());
-                System.out.println("after set header text");
-            }
-        };
     }
 
     private void unlikeTweet(Tweet myTweet) {
