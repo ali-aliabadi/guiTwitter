@@ -107,4 +107,9 @@ public class LoginController {
         showpass_txt.setText(password_txt.getText());
         password_txt.setVisible(false);
     }
+
+    @FXML
+    void initialize() {
+
+    }
 }
