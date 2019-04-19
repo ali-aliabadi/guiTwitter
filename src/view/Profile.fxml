@@ -79,17 +79,11 @@
                                  <HBox.margin>
                                     <Insets left="40.0" top="35.0" />
                                  </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                               </Text>
                               <Text fx:id="name_field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
                                     <Insets left="30.0" top="35.0" />
                                  </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                               </Text>
                            </children>
                            <VBox.margin>
@@ -102,17 +96,11 @@
                                  <HBox.margin>
                                     <Insets left="40.0" />
                                  </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                               </Text>
                               <Text fx:id="email_field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
-                                    <Insets left="38.0" />
+                                    <Insets left="36.0" />
                                  </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                               </Text>
                            </children>
                         </HBox>
@@ -122,16 +110,10 @@
                                  <HBox.margin>
                                     <Insets left="40.0" top="15.0" />
                                  </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                               </Text>
                               <Text fx:id="usernamefield" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                                  <HBox.margin>
-                                    <Insets left="5.0" top="17.0" />
+                                    <Insets left="6.0" top="17.0" />
                                  </HBox.margin>
                               </Text>
                            </children>
@@ -139,49 +121,31 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tweets :">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                                  <HBox.margin>
                                     <Insets left="40.0" top="15.0" />
                                  </HBox.margin>
                               </Text>
                               <Text fx:id="tweet" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                                  <HBox.margin>
-                                    <Insets left="27.0" top="16.0" />
+                                    <Insets left="26.0" top="16.0" />
                                  </HBox.margin>
                               </Text>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                                  <HBox.margin>
                                     <Insets left="20.0" top="15.0" />
                                  </HBox.margin>
                               </Text>
                               <Text fx:id="followings" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                                  <HBox.margin>
                                     <Insets left="27.0" top="16.0" />
                                  </HBox.margin>
                               </Text>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                                  <HBox.margin>
                                     <Insets left="20.0" top="15.0" />
                                  </HBox.margin>
                               </Text>
                               <Text fx:id="followers" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                                  <HBox.margin>
                                     <Insets left="27.0" top="16.0" />
                                  </HBox.margin>
@@ -194,27 +158,21 @@
                                  <HBox.margin>
                                     <Insets left="40.0" top="15.0" />
                                  </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                               </Text>
                               <Text fx:id="bio_field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
                                  <HBox.margin>
-                                    <Insets left="57.0" top="15.0" />
+                                    <Insets left="54.0" top="15.0" />
                                  </HBox.margin>
                               </Text>
                               <Region prefHeight="34.0" prefWidth="10.0" />
                            </children>
                         </HBox>
-                        <ScrollPane fx:id="scroll_pane" prefHeight="320.0" prefWidth="500.0">
+                        <ScrollPane prefHeight="320.0" prefWidth="496.0">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
                            <content>
-                              <VBox fx:id="v_box" prefHeight="253.0" prefWidth="496.0" spacing="5.0" />
+                              <VBox fx:id="v_box" prefHeight="253.0" prefWidth="494.0" />
                            </content>
                         </ScrollPane>
                      </children>
