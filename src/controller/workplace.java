@@ -10,16 +10,15 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import model.Main;
 import model.PageLoader;
 import model.Tweet.Tweet;
+import model.tweetView;
 import org.bson.Document;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -31,17 +30,11 @@ public class workplace {
     @FXML
     private VBox v_box;
 
-    private ArrayList<ToggleButton> toggleButtons = new ArrayList<ToggleButton>();
-    private ArrayList<DialogPane> dialogPanes = new ArrayList<DialogPane>();
-    private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
-
-    private Button btn;
-    private DialogPane dialogPane;
-    private Tweet tweetnew;
+    private ArrayList<tweetView> tweetViews = new ArrayList<tweetView>();
 
     @FXML
-    void find_profile() {
-
+    void find_profile() throws IOException {
+        new PageLoader().load("/view/findprofile.fxml");
     }
 
     @FXML
@@ -92,6 +85,8 @@ public class workplace {
             Tweet myTweet = new Tweet(newtweetid, tweetText);
             Document doc = createDocTweet(myTweet);
 
+            Main.myUser.addTweet(newtweetid);
+
             collection.insertOne(doc);
 
             Document userdoc = collection1.find(eq("username", Main.myUser.getId())).first();
@@ -120,36 +115,50 @@ public class workplace {
         di.setPadding(new Insets(10, 10, 10, 10));
         di.setStyle("-fx-border-color: black; -fx-background-color: #D0D3D4; -fx-border-width: 0px 0px 1.8px 0px; -fx-border-color:  #A9A9A9");
 
-        Button like_btn = new Button("like");
+        Button like_btn = new Button();
 
-        btn = like_btn;
-        dialogPane = di;
-        tweetnew = myTweet;
+        if (myTweet.userLiked.contains(Main.myUser.getId())) {
+            like_btn.setText("unlike");
+        } else {
+            like_btn.setText("like");
+        }
 
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+        tweetView myTweetView = new tweetView();
+        myTweetView.button = like_btn;
+        myTweetView.dialogPane = di;
+        myTweetView.tweet = myTweet;
+
+        tweetViews.add(myTweetView);
+
+        like_btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
-                System.out.println("\n\n...button clicked...\n\n");
-                if (tweetnew.userLiked.contains(Main.myUser.getId())) {
-                    tweetnew.deleteLikedUser(Main.myUser.getId());
-                    unlikeTweet(tweetnew);
-                    btn.setText("like");
-                } else {
-                    tweetnew.addUserLiked(Main.myUser.getId());
-                    likeTweet(tweetnew);
-                    btn.setText("unlike");
+                tweetView tv = null;
+                for (tweetView t : tweetViews) {
+                    if (t.button == like_btn) {
+                        tv = t;
+                    }
                 }
-                dialogPane.setHeaderText(Main.myUser.getId() + "\tlikes : " + tweetnew.numberOfLikes()
-                        + "\tTweet id : " + tweetnew.getId());
+
+                if (tv.tweet.userLiked.contains(Main.myUser.getId())) {
+                    tv.tweet.deleteLikedUser(Main.myUser.getId());
+                    unlikeTweet(tv.tweet);
+                    tv.button.setText("like");
+                } else {
+                    tv.tweet.addUserLiked(Main.myUser.getId());
+                    likeTweet(tv.tweet);
+                    tv.button.setText("unlike");
+                }
+                tv.dialogPane.setHeaderText(tv.tweet.getCreatorId() + "\tlikes : " + tv.tweet.numberOfLikes()
+                        + "\tTweet id : " + tv.tweet.getId());
 
             }
         });
 
 
-        di.setGraphic(like_btn);
+        tweetViews.get(tweetViews.size() - 1).dialogPane.setGraphic(tweetViews.get(tweetViews.size() - 1).button);
 
-        v_box.getChildren().add(di);
+        v_box.getChildren().add(0,tweetViews.get(tweetViews.size() - 1).dialogPane);
     }
 
     private void unlikeTweet(Tweet myTweet) {
@@ -193,10 +202,52 @@ public class workplace {
 
         doc.append("id", myTweet.getId());
         doc.append("text", myTweet.getText());
+        doc.append("creatorid", myTweet.getCreatorId());
         doc.append("usersliked", Arrays.asList());
+
 
         return doc;
     }
 
+    @FXML
+    private void initialize() {
+
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase database = mongoClient.getDatabase("miniTweeter");
+        MongoCollection<Document> collection = database.getCollection("Users");
+        MongoCollection<Document> collection1 = database.getCollection("Tweets");
+
+        ArrayList<Long> tweets = new ArrayList<Long>((ArrayList<Long>) collection.find(eq("username", Main.myUser.getId())).first().get("tweetsid"));
+
+        for (String userid: Main.myUser.getFollowing()) {
+            Document doc = collection.find(eq("username", userid)).first();
+            tweets.addAll((ArrayList<Long>) doc.get("tweetsid"));
+        }
+
+        int len_tweets = tweets.size();
+        long temp;
+
+        for (int i = 0; i < len_tweets; i++) {
+            for (int j = 0; j < len_tweets - i - 1; j++) {
+                if (tweets.get(j) > tweets.get(j + 1)) {
+                  temp = tweets.get(j);
+                  tweets.set(j, tweets.get(j + 1));
+                  tweets.set(j + 1, temp);
+                }
+            }
+        }
+
+        for (Long idoftweet: tweets) {
+
+            Document doc = collection1.find(eq("id", idoftweet)).first();
+            Tweet myTweet = new Tweet(idoftweet, doc.getString("text"));
+            myTweet.setCreatorId(doc.getString("creatorid"));
+            myTweet.userLiked.addAll((ArrayList<String>) doc.get("usersliked"));
+
+            addToTimeLine(myTweet);
+        }
+
+        mongoClient.close();
+    }
 
 }
