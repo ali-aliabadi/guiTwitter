@@ -127,6 +127,8 @@ public class CompleteProfile {
 
         collection.insertOne(doc);
 
+        mongoClient.close();
+
     }
 
 }
