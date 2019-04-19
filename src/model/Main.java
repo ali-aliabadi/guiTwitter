@@ -8,6 +8,7 @@ import model.User.User;
 public class Main extends Application {
 
     public static User myUser = null;
+    public static User anotherUser = null;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
