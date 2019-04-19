@@ -15,7 +15,7 @@ public class User {
 
     private ArrayList <String> following = new ArrayList <String>();
 
-    private ArrayList <String> tweets = new ArrayList <String>();
+    private ArrayList <Long> tweets = new ArrayList <Long>();
 
 
     /** constractors */
@@ -58,7 +58,7 @@ public class User {
     }
 
     // add setter for arraylists
-    public void setTweets(ArrayList<String> tweets) {
+    public void setTweets(ArrayList<Long> tweets) {
         this.tweets = tweets;
     }
 
@@ -78,7 +78,7 @@ public class User {
         following.add(userid);
     }
 
-    public void addTweet(String tweetid) {
+    public void addTweet(Long tweetid) {
         tweets.add(tweetid);
     }
 
@@ -106,6 +106,18 @@ public class User {
 
     public Gender getGender() {
         return this.gender;
+    }
+
+    public ArrayList<String> getFollowers() {
+        return followers;
+    }
+
+    public ArrayList<String> getFollowing() {
+        return following;
+    }
+
+    public ArrayList<Long> getTweets() {
+        return tweets;
     }
 
     public int getFollowersNumber() {
@@ -146,7 +158,7 @@ public class User {
         String strfollower = "";
         String strfollowing = "";
 
-        for (String str: this.tweets) {
+        for (Long str: this.tweets) {
             strtweet = (strtweet + str + ' ');
         }
 
