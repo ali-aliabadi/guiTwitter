@@ -115,7 +115,7 @@
                         <Insets left="149.0" />
                      </VBox.margin>
                   </Text>
-                  <Text fx:id="invalidemail" fill="#ff0101" strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid Email " visible="false">
+                  <Text fx:id="invalidEmail" fill="#ff0101" strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid Email " visible="false">
                      <font>
                         <Font size="15.0" />
                      </font>

@@ -21,22 +21,22 @@ import static com.mongodb.client.model.Filters.eq;
 public class LoginController {
 
     @FXML
-    private TextField username_txt;
+    private TextField usernameText;
 
     @FXML
-    private PasswordField password_txt;
+    private PasswordField passwordText;
 
     @FXML
-    private TextField showpass_txt;
+    private TextField showPassText;
 
     @FXML
-    private Text alertmsg;
+    private Text alertMassage;
 
     @FXML
-    void enterworkplace() throws IOException {
+    void enterWorkPlace() throws IOException {
 
-        String username = username_txt.getText();
-        String password = password_txt.getText();
+        String username = usernameText.getText();
+        String password = passwordText.getText();
 
         MongoClient mongoClient = new MongoClient();
         MongoDatabase database = mongoClient.getDatabase("miniTweeter");
@@ -47,16 +47,16 @@ public class LoginController {
         if (doc != null) {
             if (doc.getString("password").equals(password)) {
                 loginUser(doc);
-                new PageLoader().load("/view/workplace.fxml");
+                new PageLoader().load("/view/workPlace.fxml");
             } else {
                 // wrong password
-                alertmsg.setText("Wrong password");
-                alertmsg.setVisible(true);
+                alertMassage.setText("Wrong password");
+                alertMassage.setVisible(true);
             }
         } else {
             // user does not exist
-            alertmsg.setText("User does not exist");
-            alertmsg.setVisible(true);
+            alertMassage.setText("User does not exist");
+            alertMassage.setVisible(true);
         }
 
     }
@@ -73,7 +73,7 @@ public class LoginController {
             Main.myUser.setGender(Gender.FEMALE);
         }
 
-        ArrayList<String> tweetsId = (ArrayList<String>) doc.get("tweetsid");
+        ArrayList<Long> tweetsId = (ArrayList<Long>) doc.get("tweetsid");
         ArrayList<String> followers = (ArrayList<String>) doc.get("followers");
         ArrayList<String> followings = (ArrayList<String>) doc.get("followings");
 
@@ -81,35 +81,24 @@ public class LoginController {
         Main.myUser.setFollowers(followers);
         Main.myUser.setFollowing(followings);
 
-        // some test code
-        /*
-        System.out.println(doc.getDate("_id"));  // Error
-        System.out.println(tweetsId); // print tweetsid list and when it is empty print '[]'
-        System.out.println(tweetsId.get(0)); // Error when tweetsid is empty
-        */
     }
 
     @FXML
     void hidePass() {
-        password_txt.setVisible(true);
-        password_txt.setText(showpass_txt.getText());
-        showpass_txt.setVisible(false);
+        passwordText.setVisible(true);
+        passwordText.setText(showPassText.getText());
+        showPassText.setVisible(false);
     }
 
     @FXML
-    void loadsignuppage() throws IOException {
+    void loadSignUpPage() throws IOException {
         new PageLoader().load("/view/signup_page.fxml");
     }
 
     @FXML
     void showPass() {
-        showpass_txt.setVisible(true);
-        showpass_txt.setText(password_txt.getText());
-        password_txt.setVisible(false);
-    }
-
-    @FXML
-    void initialize() {
-
+        showPassText.setVisible(true);
+        showPassText.setText(passwordText.getText());
+        passwordText.setVisible(false);
     }
 }

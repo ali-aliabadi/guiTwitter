@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import model.Main;
 import model.PageLoader;
 import model.Tweet.Tweet;
-import model.tweetView;
+import model.TweetView;
 import org.bson.Document;
 
 import java.io.IOException;
@@ -22,35 +22,35 @@ import java.util.*;
 
 import static com.mongodb.client.model.Filters.eq;
 
-public class workplace {
+public class workPlace {
 
     @FXML
-    private TextArea tweet_text;
+    private TextArea tweetText;
 
     @FXML
-    private VBox v_box;
+    private VBox vBox;
 
-    private ArrayList<tweetView> tweetViews = new ArrayList<tweetView>();
+    private ArrayList<TweetView> tweetViews = new ArrayList<TweetView>();
 
     @FXML
-    void find_profile() throws IOException {
-        new PageLoader().load("/view/findprofile.fxml");
+    void findProfile() throws IOException {
+        new PageLoader().load("/view/findProfile.fxml");
     }
 
     @FXML
-    void log_out() throws IOException {
+    void logOut() throws IOException {
         Main.myUser = null;
         new PageLoader().load("/view/Login.fxml");
     }
 
     @FXML
-    void my_profile() throws IOException {
+    void myProfile() throws IOException {
         new PageLoader().load("/view/Profile.fxml");
     }
 
     @FXML
     void tweet() {
-        String tweetText = tweet_text.getText();
+        String tweetText = this.tweetText.getText();
         if (tweetText == null || tweetText.equals("")) {
             // creating empty alert
             Alert a = new Alert(Alert.AlertType.NONE);
@@ -73,7 +73,7 @@ public class workplace {
             a.setContentText("tweet text more than 140 characters, please type something less than or equal 140 charactars...");
             a.show();
         } else {
-            tweet_text.setText("");
+            this.tweetText.setText("");
 
             MongoClient mongoClient = new MongoClient();
             MongoDatabase database = mongoClient.getDatabase("miniTweeter");
@@ -108,7 +108,7 @@ public class workplace {
         DialogPane di = new DialogPane();
 
         di.setContentText(myTweet.getText());
-        di.setHeaderText(Main.myUser.getId() + "\tlikes : " + myTweet.numberOfLikes()
+        di.setHeaderText(myTweet.getCreatorId() + "  \tlikes : " + myTweet.numberOfLikes()
                 + "\tTweet id : " + myTweet.getId());
         di.setPrefWidth(496);
         di.setPrefHeight(125);
@@ -123,7 +123,7 @@ public class workplace {
             like_btn.setText("like");
         }
 
-        tweetView myTweetView = new tweetView();
+        TweetView myTweetView = new TweetView();
         myTweetView.button = like_btn;
         myTweetView.dialogPane = di;
         myTweetView.tweet = myTweet;
@@ -133,8 +133,8 @@ public class workplace {
         like_btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                tweetView tv = null;
-                for (tweetView t : tweetViews) {
+                TweetView tv = null;
+                for (TweetView t : tweetViews) {
                     if (t.button == like_btn) {
                         tv = t;
                     }
@@ -142,14 +142,14 @@ public class workplace {
 
                 if (tv.tweet.userLiked.contains(Main.myUser.getId())) {
                     tv.tweet.deleteLikedUser(Main.myUser.getId());
-                    unlikeTweet(tv.tweet);
+                    unLikeTweet(tv.tweet);
                     tv.button.setText("like");
                 } else {
                     tv.tweet.addUserLiked(Main.myUser.getId());
                     likeTweet(tv.tweet);
                     tv.button.setText("unlike");
                 }
-                tv.dialogPane.setHeaderText(tv.tweet.getCreatorId() + "\tlikes : " + tv.tweet.numberOfLikes()
+                tv.dialogPane.setHeaderText(tv.tweet.getCreatorId() + "  \tlikes : " + tv.tweet.numberOfLikes()
                         + "\tTweet id : " + tv.tweet.getId());
 
             }
@@ -158,10 +158,17 @@ public class workplace {
 
         tweetViews.get(tweetViews.size() - 1).dialogPane.setGraphic(tweetViews.get(tweetViews.size() - 1).button);
 
-        v_box.getChildren().add(0,tweetViews.get(tweetViews.size() - 1).dialogPane);
+        vBox.getChildren().add(0,tweetViews.get(tweetViews.size() - 1).dialogPane);
+
+        /**
+         * the border between tweets(dialog panes) are not showing
+         * "For someone who is facing the same issue, the solution is just update your java SE from 8u40
+         * to 8u60 or above. It is a bug in java SE https://bugs.openjdk.java.net/browse/JDK-8095678"
+         * from : https://stackoverflow.com/questions/44860340/javafx-custom-dialogpane-having-border-color-shrinks-when-ever-a-key-is-pessed
+         */
     }
 
-    private void unlikeTweet(Tweet myTweet) {
+    private void unLikeTweet(Tweet myTweet) {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase database = mongoClient.getDatabase("miniTweeter");
         MongoCollection<Document> collection = database.getCollection("Tweets");
@@ -249,5 +256,4 @@ public class workplace {
 
         mongoClient.close();
     }
-
 }

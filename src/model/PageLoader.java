@@ -1,7 +1,6 @@
 package model;
 
 
-import controller.Profile;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,7 +9,7 @@ import java.io.IOException;
 
 public class PageLoader {
     private static final int WIDTH = 700;
-    private static final int HEIGHT = 487;
+    public static final int HEIGHT = 487;
     private static Stage stage;
 
     public static void intiStage(Stage primarySrage) {

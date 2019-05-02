@@ -18,7 +18,7 @@
             <children>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="signup_btn" alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#loadsignuppage" style="-fx-background-color: transparent; -fx-text-fill: #aeaeae; -fx-border-width: 0px 0px 2px0px 0px 02px 0px  2px; -fx-border-color: #aeaeae; -fx-font-weight: bold; -fx-font-size: 15;" text="Sign up">
+                        <Button fx:id="signup_btn" alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#loadSignUpPage" style="-fx-background-color: transparent; -fx-text-fill: #aeaeae; -fx-border-width: 0px 0px 2px0px 0px 02px 0px  2px; -fx-border-color: #aeaeae; -fx-font-weight: bold; -fx-font-size: 15;" text="Sign up">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
                             </HBox.margin>
@@ -50,7 +50,7 @@
                         </Text>
                         <HBox alignment="CENTER" prefHeight="20.0" prefWidth="700.0" style="-fx-border-color: white;">
                             <children>
-                                <TextField fx:id="username_txt" prefHeight="13.0" prefWidth="256.0" promptText="Username" style="-fx-background-color: transparent; -fx-font-size: 15;">
+                                <TextField fx:id="usernameText" prefHeight="13.0" prefWidth="256.0" promptText="Username" style="-fx-background-color: transparent; -fx-font-size: 15;">
                                 </TextField>
                                 <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent;" textAlignment="CENTER">
                                     <graphic>
@@ -71,7 +71,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="35.0" prefWidth="700.0" style="-fx-border-color: white;">
                             <children>
-                                <PasswordField fx:id="password_txt" prefHeight="25.0" prefWidth="600.0" promptText="Password" style="-fx-background-color: transparent; -fx-font-size: 15;" HBox.hgrow="NEVER">
+                                <PasswordField fx:id="passwordText" prefHeight="25.0" prefWidth="600.0" promptText="Password" style="-fx-background-color: transparent; -fx-font-size: 15;" HBox.hgrow="NEVER">
                                 </PasswordField>
                                 <Button fx:id="showpass_btn" mnemonicParsing="false" onMousePressed="#showPass" onMouseReleased="#hidePass" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
                                     <graphic>
@@ -87,7 +87,7 @@
                                 <Insets bottom="10.0" left="200.0" right="200.0" />
                             </VBox.margin>
                         </HBox>
-                        <Text fx:id="alertmsg" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="Wrong password" visible="false">
+                        <Text fx:id="alertMassage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="Wrong password" visible="false">
                             <font>
                                 <Font name="System Bold" size="20.0" />
                             </font>
@@ -95,7 +95,7 @@
                                 <Insets bottom="10.0" />
                             </VBox.margin>
                         </Text>
-                        <Button fx:id="enter_btn" mnemonicParsing="false" onMouseClicked="#enterworkplace" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #16172e; -fx-text-fill: white; -fx-font-size: 17; -fx-font-weight: bold;" text="Enter">
+                        <Button fx:id="enter_btn" mnemonicParsing="false" onMouseClicked="#enterWorkPlace" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #16172e; -fx-text-fill: white; -fx-font-size: 17; -fx-font-weight: bold;" text="Enter">
                             <font>
                                 <Font name="System Bold" size="20.0" />
                             </font>
@@ -107,6 +107,6 @@
                 </VBox>
             </children>
         </VBox>
-        <TextField fx:id="showpass_txt" layoutX="200.0" layoutY="295.0" prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: transparent; -fx-font-size: 15;" visible="false" />
+        <TextField fx:id="showPassText" layoutX="200.0" layoutY="295.0" prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: transparent; -fx-font-size: 15;" visible="false" />
     </children>
 </Pane>

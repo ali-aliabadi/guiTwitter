@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Profile">
+<Pane prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.anotherProfile">
     <children>
         <VBox prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #4f528c;">
          <children>
@@ -20,7 +20,7 @@
                <children>
                   <VBox prefHeight="450.0" prefWidth="200.0" style="-fx-background-color: #2C3E50;">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #273746; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: white;" text="My Profile" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#myProfile" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: white;" text="My Profile" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -80,7 +80,7 @@
                                     <Insets left="40.0" top="35.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text fx:id="name_field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="nameField" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
                                     <Insets left="30.0" top="35.0" />
                                  </HBox.margin>
@@ -97,7 +97,7 @@
                                     <Insets left="40.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text fx:id="email_field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="emailField" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
                                     <Insets left="36.0" />
                                  </HBox.margin>
@@ -111,43 +111,48 @@
                                     <Insets left="40.0" top="15.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text fx:id="usernamefield" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="usernameField" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
-                                    <Insets left="6.0" top="17.0" />
+                                    <Insets left="6.0" top="15.0" />
                                  </HBox.margin>
                               </Text>
+                              <Button fx:id="followButton" mnemonicParsing="false" onAction="#followUser" text="Follow">
+                                 <HBox.margin>
+                                    <Insets left="150.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tweets :">
                                  <HBox.margin>
-                                    <Insets left="40.0" top="15.0" />
+                                    <Insets left="40.0" top="14.0" />
                                  </HBox.margin>
                               </Text>
                               <Text fx:id="tweet" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
-                                    <Insets left="26.0" top="16.0" />
+                                    <Insets left="26.0" top="14.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
+                              <Text fill="#1d076b" onMouseClicked="#followings" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline: true;" text="Followings :">
                                  <HBox.margin>
-                                    <Insets left="20.0" top="15.0" />
+                                    <Insets left="20.0" top="14.0" />
                                  </HBox.margin>
                               </Text>
                               <Text fx:id="followings" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
-                                    <Insets left="27.0" top="16.0" />
+                                    <Insets left="26.0" top="14.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
+                              <Text fill="#1d076b" onMouseClicked="#followers" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline: true;" text="Followers :">
                                  <HBox.margin>
-                                    <Insets left="20.0" top="15.0" />
+                                    <Insets left="20.0" top="14.0" />
                                  </HBox.margin>
                               </Text>
                               <Text fx:id="followers" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
-                                    <Insets left="27.0" top="16.0" />
+                                    <Insets left="26.0" top="14.0" />
                                  </HBox.margin>
                               </Text>
                            </children>
@@ -159,7 +164,7 @@
                                     <Insets left="40.0" top="15.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text fx:id="bio_field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="bioField" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
                                     <Insets left="54.0" top="15.0" />
                                  </HBox.margin>
@@ -167,12 +172,12 @@
                               <Region prefHeight="34.0" prefWidth="10.0" />
                            </children>
                         </HBox>
-                        <ScrollPane prefHeight="320.0" prefWidth="496.0">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="320.0" prefWidth="500.0">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
                            <content>
-                              <VBox fx:id="v_box" prefHeight="253.0" prefWidth="494.0" />
+                              <VBox fx:id="vBox" prefHeight="250.0" prefWidth="490.0" />
                            </content>
                         </ScrollPane>
                      </children>

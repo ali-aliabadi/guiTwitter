@@ -20,58 +20,61 @@ import static com.mongodb.client.model.Filters.eq;
 public class SignUpController {
 
     @FXML
-    private TextField usernamefield;
+    private TextField usernameField;
 
     @FXML
     private PasswordField password;
 
     @FXML
-    private PasswordField confirmpassword;
+    private PasswordField confirmPassword;
 
     @FXML
-    private TextField show_confirmpass;
+    private TextField showConfirmPass;
 
     @FXML
-    private TextField show_pass;
+    private TextField showPass;
 
     @FXML
-    private Text passwordmatch;
+    private Text passwordMatch;
 
     @FXML
-    private Text usernamematch;
+    private Text usernameMatch;
 
     @FXML
     void hideConfirmPass() {
-        confirmpassword.setVisible(true);
-        show_pass.setVisible(false);
+        confirmPassword.setVisible(true);
+        showPass.setVisible(false);
     }
 
     @FXML
     void hidePass() {
         password.setVisible(true);
-        show_confirmpass.setVisible(false);
+        showConfirmPass.setVisible(false);
     }
 
     @FXML
-    void loadloginpage() throws IOException {
+    void loadLoginPage() throws IOException {
         new PageLoader().load("/view/Login.fxml");
     }
 
     @FXML
-    void registeruser() throws IOException {
+    void registerUser() throws IOException {
         String pass1 = password.getText();
-        String pass2 = confirmpassword.getText();
+        String pass2 = confirmPassword.getText();
         if (pass1.equals(pass2)) {
-            passwordmatch.setVisible(false);
-            if (! userIdInDB(usernamefield.getText())) {
-                signUp(usernamefield.getText(), pass1);
-                new PageLoader().load("/view/CompleteProfile.fxml");
+            passwordMatch.setVisible(false);
+            if (usernameField.getText().replace(" ", "").equals("") || usernameField.getText() == null) {
+                return;
+            }
+            if (! userIdInDB(usernameField.getText())) {
+                signUp(usernameField.getText(), pass1);
+                new PageLoader().load("/view/completeProfile.fxml");
             } else {
-                usernamematch.setVisible(true);
+                usernameMatch.setVisible(true);
             }
         } else {
-            passwordmatch.setVisible(true);
-            usernamematch.setVisible(false);
+            passwordMatch.setVisible(true);
+            usernameMatch.setVisible(false);
         }
     }
 
@@ -86,15 +89,15 @@ public class SignUpController {
 
     @FXML
     void showConfirmPass() {
-        show_pass.setVisible(true);
-        show_pass.setText(confirmpassword.getText());
-        confirmpassword.setVisible(false);
+        showPass.setVisible(true);
+        showPass.setText(confirmPassword.getText());
+        confirmPassword.setVisible(false);
     }
 
     @FXML
     void showPass() {
-        show_confirmpass.setVisible(true);
-        show_confirmpass.setText(password.getText());
+        showConfirmPass.setVisible(true);
+        showConfirmPass.setText(password.getText());
         password.setVisible(false);
     }
 

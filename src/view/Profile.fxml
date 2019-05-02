@@ -31,7 +31,7 @@
                               <Insets bottom="15.0" top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onMouseClicked="#workplace" prefHeight="26.0" prefWidth="200.0" style="-fx-padding: 10px; -fx-background-color: transparent; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: white;" text="Time Line" textFill="WHITE">
+                        <Button mnemonicParsing="false" onMouseClicked="#workPlace" prefHeight="26.0" prefWidth="200.0" style="-fx-padding: 10px; -fx-background-color: transparent; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: white;" text="Time Line" textFill="WHITE">
                            <VBox.margin>
                               <Insets bottom="15.0" />
                            </VBox.margin>
@@ -39,7 +39,7 @@
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onMouseClicked="#find_profile" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="Find Profile" textFill="WHITE">
+                        <Button mnemonicParsing="false" onMouseClicked="#findProfile" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="Find Profile" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -50,7 +50,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                         </Button>
-                        <Button mnemonicParsing="false" onMouseClicked="#log_out" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-color: transparent; -fx-border-width: 0px 0px 1px 0px;" text="Log out" textFill="WHITE">
+                        <Button mnemonicParsing="false" onMouseClicked="#logOut" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-color: transparent; -fx-border-width: 0px 0px 1px 0px;" text="Log out" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -80,7 +80,7 @@
                                     <Insets left="40.0" top="35.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text fx:id="name_field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="nameField" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
                                     <Insets left="30.0" top="35.0" />
                                  </HBox.margin>
@@ -97,7 +97,7 @@
                                     <Insets left="40.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text fx:id="email_field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="emailField" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
                                     <Insets left="36.0" />
                                  </HBox.margin>
@@ -111,7 +111,7 @@
                                     <Insets left="40.0" top="15.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text fx:id="usernamefield" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="usernameField" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
                                     <Insets left="6.0" top="17.0" />
                                  </HBox.margin>
@@ -130,7 +130,7 @@
                                     <Insets left="26.0" top="16.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
+                              <Text fill="#12076b" onMouseClicked="#followings" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline: true;" text="Followings :">
                                  <HBox.margin>
                                     <Insets left="20.0" top="15.0" />
                                  </HBox.margin>
@@ -140,7 +140,7 @@
                                     <Insets left="27.0" top="16.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
+                              <Text fill="#12076b" onMouseClicked="#followers" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline: true;" text="Followers :">
                                  <HBox.margin>
                                     <Insets left="20.0" top="15.0" />
                                  </HBox.margin>
@@ -159,7 +159,7 @@
                                     <Insets left="40.0" top="15.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text fx:id="bio_field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="bioField" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                  <HBox.margin>
                                     <Insets left="54.0" top="15.0" />
                                  </HBox.margin>
@@ -167,12 +167,12 @@
                               <Region prefHeight="34.0" prefWidth="10.0" />
                            </children>
                         </HBox>
-                        <ScrollPane prefHeight="320.0" prefWidth="496.0">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="320.0" prefWidth="496.0">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
                            <content>
-                              <VBox fx:id="v_box" prefHeight="253.0" prefWidth="494.0" />
+                              <VBox fx:id="vBox" prefHeight="248.0" prefWidth="498.0" />
                            </content>
                         </ScrollPane>
                      </children>

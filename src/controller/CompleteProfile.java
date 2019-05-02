@@ -5,7 +5,6 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -38,10 +37,7 @@ public class CompleteProfile {
     private RadioButton femaleButton;
 
     @FXML
-    private Text invalidemail;
-
-    @FXML
-    private Button enter;
+    private Text invalidEmail;
 
     @FXML
     private Text uncompletetext;
@@ -54,24 +50,24 @@ public class CompleteProfile {
         if (maleButton.isSelected() || femaleButton.isSelected()) {
             if (name.equals("") || email.equals("") || bio.equals("")) {
                 uncompletetext.setVisible(true);
-                invalidemail.setVisible(false);
+                invalidEmail.setVisible(false);
             } else {
                 if (validate(email)) {
                     bio = bio.replace('\n', ' ');
                     if (maleButton.isSelected()) {
-                        completeProf(name, email, bio, Gender.MALE);
+                        completeProfile(name, email, bio, Gender.MALE);
                     } else {
-                        completeProf(name, email, bio, Gender.FEMALE);
+                        completeProfile(name, email, bio, Gender.FEMALE);
                     }
-                    new PageLoader().load("/view/workplace.fxml");
+                    new PageLoader().load("/view/workPlace.fxml");
                 } else {
-                    invalidemail.setVisible(true);
+                    invalidEmail.setVisible(true);
                     uncompletetext.setVisible(false);
                 }
             }
         } else {
             uncompletetext.setVisible(true);
-            invalidemail.setVisible(false);
+            invalidEmail.setVisible(false);
         }
     }
 
@@ -103,7 +99,7 @@ public class CompleteProfile {
         return matcher.find();
     }
 
-    static void completeProf(String name, String email, String bio, Gender gender) {
+    static void completeProfile(String name, String email, String bio, Gender gender) {
         Main.myUser.setName(name);
         Main.myUser.setEmail(email);
         Main.myUser.setBio(bio);

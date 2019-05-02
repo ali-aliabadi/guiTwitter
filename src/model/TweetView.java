@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
 import model.Tweet.Tweet;
 
-public class tweetView {
+public class TweetView {
 
     public DialogPane dialogPane;
     public Button button;

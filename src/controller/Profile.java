@@ -12,10 +12,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import model.Info;
 import model.Main;
 import model.PageLoader;
 import model.Tweet.Tweet;
-import model.tweetView;
+import model.TweetView;
 import org.bson.Document;
 
 import java.io.IOException;
@@ -27,10 +28,10 @@ public class Profile {
 
 
     @FXML
-    private Text name_field;
+    private Text nameField;
 
     @FXML
-    private Text email_field;
+    private Text emailField;
 
     @FXML
     private Text followings;
@@ -42,49 +43,50 @@ public class Profile {
     private Text tweet;
 
     @FXML
-    private Text bio_field;
+    private Text bioField;
 
     @FXML
-    private Text usernamefield;
+    private Text usernameField;
 
     @FXML
-    private VBox v_box;
+    private VBox vBox;
 
-    private ArrayList<tweetView> tweetViews = new ArrayList<tweetView>();
+    private ArrayList<TweetView> tweetViews = new ArrayList<TweetView>();
 
     @FXML
-    void find_profile() throws IOException {
-        new PageLoader().load("/view/findprofile.fxml");
+    void findProfile() throws IOException {
+        new PageLoader().load("/view/findProfile.fxml");
     }
 
     @FXML
-    void log_out() throws IOException {
+    void logOut() throws IOException {
         Main.myUser = null;
         new PageLoader().load("/view/Login.fxml");
     }
 
     @FXML
-    void workplace() throws IOException {
-        new PageLoader().load("/view/workplace.fxml");
+    void workPlace() throws IOException {
+        new PageLoader().load("/view/workPlace.fxml");
     }
 
     @FXML
     private void initialize() {
-        name_field.setText(Main.myUser.getName());
-        email_field.setText(Main.myUser.getEmail());
-        usernamefield.setText(Main.myUser.getId());
+        nameField.setText(Main.myUser.getName());
+        emailField.setText(Main.myUser.getEmail());
+        usernameField.setText(Main.myUser.getId());
         String bio = Main.myUser.getBio();
         int len = bio.length();
-        if (len > 45) {
-            bio = bio.substring(0, 45) + "_\n" + bio.substring(45, len);
+        int maxLenght = PageLoader.HEIGHT / 9;
+        if (len > maxLenght) {
+            bio = bio.substring(0, maxLenght) + "_\n" + bio.substring(maxLenght, len);
         }
-        if (len + 2 > 90) {
-            bio = bio.substring(0, 90) + "_\n" + bio.substring(90, len + 2);
+        if (len + 2 > maxLenght * 2) {
+            bio = bio.substring(0, maxLenght * 2) + "_\n" + bio.substring(maxLenght * 2, len + 2);
         }
-        if (len + 4 > 135) {
-            bio = bio.substring(0, 135) + "_\n" + bio.substring(135, len + 4);
+        if (len + 4 > maxLenght * 3) {
+            bio = bio.substring(0, maxLenght * 3) + "_\n" + bio.substring(maxLenght * 3, len + 4);
         }
-        bio_field.setText(bio);
+        bioField.setText(bio);
         followers.setText(String.valueOf(Main.myUser.getFollowersNumber()));
         followings.setText(String.valueOf(Main.myUser.getFollowingsNumber()));
         tweet.setText(String.valueOf(Main.myUser.getTweetsNumber()));
@@ -106,7 +108,7 @@ public class Profile {
         mongoClient.close();
     }
 
-    private void unlikeTweet(Tweet myTweet) {
+    private void unLikeTweet(Tweet myTweet) {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase database = mongoClient.getDatabase("miniTweeter");
         MongoCollection<Document> collection = database.getCollection("Tweets");
@@ -161,7 +163,7 @@ public class Profile {
             like_btn.setText("like");
         }
 
-        tweetView myTweetView = new tweetView();
+        TweetView myTweetView = new TweetView();
         myTweetView.button = like_btn;
         myTweetView.dialogPane = di;
         myTweetView.tweet = myTweet;
@@ -171,8 +173,8 @@ public class Profile {
         like_btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                tweetView tv = null;
-                for (tweetView t : tweetViews) {
+                TweetView tv = null;
+                for (TweetView t : tweetViews) {
                     if (t.button == like_btn) {
                         tv = t;
                     }
@@ -180,7 +182,7 @@ public class Profile {
 
                 if (tv.tweet.userLiked.contains(Main.myUser.getId())) {
                     tv.tweet.deleteLikedUser(Main.myUser.getId());
-                    unlikeTweet(tv.tweet);
+                    unLikeTweet(tv.tweet);
                     tv.button.setText("like");
                 } else {
                     tv.tweet.addUserLiked(Main.myUser.getId());
@@ -196,8 +198,22 @@ public class Profile {
 
         tweetViews.get(tweetViews.size() - 1).dialogPane.setGraphic(tweetViews.get(tweetViews.size() - 1).button);
 
-        v_box.getChildren().add(0,tweetViews.get(tweetViews.size() - 1).dialogPane);
+        vBox.getChildren().add(0,tweetViews.get(tweetViews.size() - 1).dialogPane);
     }
 
+    @FXML
+    void followers() throws IOException {
 
+        Info.setInfo("myFollowers");
+        new PageLoader().load("/view/followersFollowings.fxml");
+
+    }
+
+    @FXML
+    void followings() throws IOException {
+
+        Info.setInfo("myFollowings");
+        new PageLoader().load("/view/followersFollowings.fxml");
+
+    }
 }

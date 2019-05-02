@@ -3,7 +3,7 @@ package model.User;
 import java.util.ArrayList;
 
 public class User {
-    
+
     private String id;
     private String password;
     private String name;
@@ -24,7 +24,7 @@ public class User {
         this.id = id;
         this.password = password;
     }
-    
+
     /** setters and adders(add follower and add following) */
 
     public void setId(String id) {
